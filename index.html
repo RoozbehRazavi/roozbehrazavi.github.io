@@ -2,24 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
   <title>Roozbeh Razavi — PhD Student & Researcher</title>
   <meta name="description" content="Seyed Roozbeh Razavi Rohani — PhD student at Simon Fraser University. Research in continual learning, reinforcement learning, non-stationary environments." />
   <link rel="icon" href="r.ico" />
 
-  <!-- Fonts -->
+  <!-- Fonts: modern, legible -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-
-  <!-- FontAwesome -->
-  <script defer src="assets/fontawesome/js/all.min.js"></script>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css" />
-  <link id="theme-style" rel="stylesheet" href="assets/css/orbit-1.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Roozbeh Razavi — PhD Student & Researcher" />
@@ -59,253 +50,304 @@
   </script>
 
   <style>
-    .small-text { font-size: 0.95rem; }
-    .award-title { margin: 0; }
+    :root {
+      --bg: #0b0d10;
+      --panel: #101418;
+      --text: #e6eaf2;
+      --muted: #9aa4b2;
+      --brand: #6ee7b7; /* mint */
+      --brand-2: #60a5fa; /* blue */
+      --ring: rgba(110, 231, 183, 0.45);
+      --card: #0f1216;
+      --border: #1c222b;
+      --shadow: 0 10px 25px rgba(0,0,0,.35);
+    }
+    @media (prefers-color-scheme: light) {
+      :root { --bg:#f7fafc; --panel:#ffffff; --text:#0f1720; --muted:#445165; --card:#ffffff; --border:#e6eaf2; --shadow:0 10px 25px rgba(10, 20, 30, .06);}  
+    }
+    [data-theme="light"] :root { --bg:#f7fafc; --panel:#ffffff; --text:#0f1720; --muted:#445165; --card:#ffffff; --border:#e6eaf2; --shadow:0 10px 25px rgba(10, 20, 30, .06);} 
+
+    html, body { height: 100%; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji","Segoe UI Emoji";
+      line-height: 1.6; font-size: 16px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    }
+
+    a { color: var(--brand-2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+
+    /* Header */
+    .header { position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(140%) blur(10px); background: color-mix(in oklab, var(--bg) 82%, transparent); border-bottom:1px solid var(--border); }
+    .header-inner { display:flex; align-items:center; gap: 16px; padding: 14px 24px; }
+    .avatar { width: 56px; height: 56px; border-radius: 50%; border:1px solid var(--border); box-shadow: var(--shadow); background:#000; object-fit: cover; }
+    .title { display:flex; flex-direction:column; }
+    .title h1 { margin: 0; font-size: clamp(1.25rem, 1rem + 1.2vw, 1.8rem); font-weight: 800; letter-spacing: -0.02em; }
+    .title .tag { margin-top: 2px; color: var(--muted); font-weight: 500; }
+
+    .spacer { flex: 1; }
+    .actions { display:flex; align-items:center; gap:10px; }
+    .btn { display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius: 14px; border:1px solid var(--border); background: var(--panel); color: var(--text); box-shadow: var(--shadow);
+      transition: transform .06s ease, box-shadow .2s ease; }
+    .btn:hover { transform: translateY(-1px); }
+    .btn.primary { border-color: transparent; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color:#081017; font-weight: 700; }
+    .btn .icon { font-size: 1.1rem; }
+    .theme-toggle { cursor: pointer; }
+
+    /* Layout */
+    .grid { display:grid; grid-template-columns: 290px 1fr; gap: 28px; margin-top: 24px; }
+    @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+
+    /* Sidebar */
+    .side { position: sticky; top: 86px; align-self: start; display:flex; flex-direction:column; gap: 22px; }
+    .card { background: var(--card); border:1px solid var(--border); border-radius: 18px; padding: 18px; box-shadow: var(--shadow); }
+    .card h2 { margin: 0 0 10px; font-size: 1rem; letter-spacing: .02em; text-transform: uppercase; color: var(--muted); }
+    .contact li+li { margin-top: 8px; }
+    .contact a { word-break: break-word; }
+
+    .toc a { display:block; padding:8px 10px; border-radius: 10px; color: var(--text); border:1px solid transparent; }
+    .toc a:hover { background: color-mix(in srgb, var(--brand-2) 10%, transparent); border-color: color-mix(in srgb, var(--brand-2) 30%, var(--border)); }
+
+    .lang-list { margin: 0; padding-left: 18px; }
+
+    /* Main */
+    main { display:flex; flex-direction:column; gap: 20px; }
+    section { background: var(--panel); border:1px solid var(--border); border-radius: 18px; padding: 22px; box-shadow: var(--shadow); }
+    .section-title { margin: 0 0 14px; font-size: 1.25rem; letter-spacing: -0.01em; display:flex; align-items:center; gap:10px; }
+    .section-title .chip { font-size:.85rem; color: var(--muted); }
+
+    .summary p { margin: 0 0 10px; }
+
+    .item { padding: 14px 0; border-top: 1px dashed var(--border); }
+    .item:first-child { border-top: 0; padding-top: 0; }
+    .upper-row { display:flex; align-items: baseline; gap: 12px; justify-content: space-between; }
+    .job-title { margin:0; font-size: 1rem; font-weight: 700; letter-spacing: -.01em; }
+    .time, .company, .small-text { color: var(--muted); font-size: .95rem; }
+
+    .skillset { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+    .skillset .item { border-top:0; background: var(--card); border:1px solid var(--border); border-radius: 14px; padding: 12px 14px; }
+    .level-title { margin: 0 0 6px; font-size: 1rem; }
+
+    ul.clean { margin: 0; padding-left: 18px; }
+
+    /* Footer */
+    footer { margin: 28px 0 40px; color: var(--muted); text-align:center; }
+
+    /* Accessibility */
     .skip-link { position:absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden; }
-    .skip-link:focus { position: static; width: auto; height: auto; padding: .5rem .75rem; background: #222; color: #fff; border-radius: .25rem; }
-    .sidebar-wrapper a { text-decoration: none; }
-    .profile { max-width: 120px; height: auto; border-radius: 50%; }
-    .contact-list li + li { margin-top: .35rem; }
+    .skip-link:focus { position: fixed; left: 18px; top: 18px; width:auto; height:auto; background: #222; color:#fff; padding:.6rem .8rem; border-radius: .5rem; z-index: 100; }
+
+    /* Print */
+    @media print {
+      .header, .theme-toggle, .btn.primary { display:none !important; }
+      body { background: #fff; color:#111; }
+      section, .card { box-shadow: none; border-color:#ccc; }
+    }
   </style>
 </head>
 
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
-  <div class="wrapper mt-4 mt-lg-5">
-    <aside class="sidebar-wrapper" aria-label="Sidebar">
-      <div class="profile-container text-center">
-        <img class="profile" src="assets/images/profile.png" alt="Portrait of Roozbeh Razavi" loading="lazy" />
-        <h1 class="name h3 mt-3 mb-1">Roozbeh Razavi</h1>
-        <p class="tagline h6 text-muted">PhD Student & Researcher</p>
-      </div>
 
-      <div class="contact-container container-block">
-        <ul class="list-unstyled contact-list">
-          <li class="email">
-            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
-            <a href="mailto:srr8@sfu.ca">srr8@sfu.ca</a> <span class="text-muted">/</span>
-            <a href="mailto:razavii.roozbeh@gmail.com">razavii.roozbeh@gmail.com</a>
-          </li>
-          <li class="phone"><i class="fa-solid fa-phone" aria-hidden="true"></i>
-            <a href="tel:+16729713799">+1 (672) 971-3799</a></li>
-          <li class="github"><i class="fa-brands fa-github" aria-hidden="true"></i>
-            <a href="https://github.com/RoozbehRazavi" target="_blank" rel="noopener">RoozbehRazavi</a></li>
-          <li class="website"><i class="fa-solid fa-globe" aria-hidden="true"></i>
-            <a href="https://roozbehrazavi.github.io" target="_blank" rel="noopener">roozbehrazavi.github.io</a></li>
-          <!-- Optional: add LinkedIn here -->
-          <!-- <li class="linkedin"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i><a href="#" target="_blank" rel="noopener">LinkedIn</a></li> -->
-          <!-- Optional: CV file -->
-          <!-- <li class="cv"><i class="fa-solid fa-address-card" aria-hidden="true"></i><a href="assets/docs/Roozbeh_Razavi_CV.pdf" target="_blank" rel="noopener">CV (PDF)</a></li> -->
-        </ul>
+  <!-- Header / hero -->
+  <header class="header">
+    <div class="header-inner container" role="banner">
+      <img class="avatar" src="assets/images/profile.png" alt="Portrait of Roozbeh Razavi" loading="lazy" />
+      <div class="title">
+        <h1>Roozbeh Razavi</h1>
+        <div class="tag">PhD Student & Researcher</div>
       </div>
-
-      <nav class="education-container container-block" aria-label="Section links">
-        <h2 class="container-block-title">Contents</h2>
-        <div><a href="#about">About Me</a></div>
-        <div><a href="#education">Education</a></div>
-        <div><a href="#publications">Publications</a></div>
-        <div><a href="#projects">Projects</a></div>
-        <div><a href="#experience">Experience</a></div>
-        <div><a href="#teaching">Teaching</a></div>
-        <div><a href="#honors">Honors</a></div>
-        <div><a href="#skills">Skills</a></div>
-        <div><a href="#courses">Selected Courses</a></div>
+      <div class="spacer" aria-hidden="true"></div>
+      <nav class="actions" aria-label="Quick links">
+        <a class="btn" href="#publications" title="Jump to publications">📄 <span>Publications</span></a>
+        <a class="btn" href="mailto:srr8@sfu.ca" title="Email Roozbeh">✉️ <span>Contact</span></a>
+        <button class="btn theme-toggle" type="button" id="themeToggle" title="Toggle theme">🌓 <span>Theme</span></button>
       </nav>
+    </div>
+  </header>
 
-      <div class="languages-container container-block">
-        <h2 class="container-block-title">Languages</h2>
-        <ul class="list-unstyled interests-list">
-          <li>Persian <span class="lang-desc">(Native)</span></li>
-          <li>English <span class="lang-desc">(Fluent)</span></li>
+  <div class="container grid" id="layout">
+    <!-- Sidebar -->
+    <aside class="side" aria-label="Sidebar">
+      <section class="card">
+        <h2>Contact</h2>
+        <ul class="clean contact" aria-label="Contact list">
+          <li>✉️ <a href="mailto:srr8@sfu.ca">srr8@sfu.ca</a> <span class="time" aria-hidden="true">/</span> <a href="mailto:razavii.roozbeh@gmail.com">razavii.roozbeh@gmail.com</a></li>
+          <li>📞 <a href="tel:+16729713799">+1 (672) 971-3799</a></li>
+          <li>🐙 <a href="https://github.com/RoozbehRazavi" target="_blank" rel="noopener">github.com/RoozbehRazavi</a></li>
+          <li>🌐 <a href="https://roozbehrazavi.github.io" target="_blank" rel="noopener">roozbehrazavi.github.io</a></li>
+          <!-- Optional: CV file -->
+          <!-- <li>🪪 <a href="assets/docs/Roozbeh_Razavi_CV.pdf" target="_blank" rel="noopener">CV (PDF)</a></li> -->
         </ul>
-      </div>
+      </section>
+
+      <section class="card toc" aria-label="Section links">
+        <h2>Contents</h2>
+        <a href="#about">About Me</a>
+        <a href="#education">Education</a>
+        <a href="#publications">Publications</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#teaching">Teaching</a>
+        <a href="#honors">Honors</a>
+        <a href="#skills">Skills</a>
+        <a href="#courses">Selected Courses</a>
+      </section>
+
+      <section class="card" aria-label="Languages">
+        <h2>Languages</h2>
+        <ul class="lang-list">
+          <li>Persian <span class="time">(Native)</span></li>
+          <li>English <span class="time">(Fluent)</span></li>
+        </ul>
+      </section>
     </aside>
 
-    <main id="main" class="main-wrapper" role="main">
-      <section id="about" class="section summary-section">
-        <h2 class="section-title"><span class="icon-holder"><i class="fa-solid fa-user" aria-hidden="true"></i></span>About Me</h2>
+    <!-- Main content -->
+    <main id="main" role="main">
+      <section id="about" aria-labelledby="about-title">
+        <h2 class="section-title" id="about-title">About Me <span class="chip">👋</span></h2>
         <div class="summary">
-          <p>I’m a third-year Ph.D. student in Computer Science at Simon Fraser University, where I’m fortunate to work under the supervision of Professor Mo Chen at the MARS Lab. Before joining SFU, I completed my Master’s degree at Sharif University of Technology, advised by Professor Mahdieh Soleymani, and earned my Bachelor’s degree at Shiraz University.
-
-<p>My broad research goal is to understand and develop the fundamental components required to build artificial general (or super) intelligence — an agent capable of learning efficiently, generalizing well, and achieving human-level (or beyond) performance across diverse cognitive tasks. I believe such intelligence will emerge from the interplay of several key mechanisms: memory hierarchies, attention, reasoning, lifelong learning and knowledge transfer, goal-oriented behavior, and imagination.
-
-Inspired by neuroscience, I aim to bridge insights from the brain with computational learning systems. So far, my research has focused on Continual Learning and Reinforcement Learning, where I explore neuron-inspired approaches that integrate principles observed in biological intelligence.</p>
-
-<p>Beyond research — which I genuinely love (most of the time 🙂) — I enjoy watching thought-provoking movies about the future, pondering philosophical questions about the nature of intelligence and the meaning of life, and exploring ideas from different scientific disciplines.</p>
+          <p>I’m a third-year Ph.D. student in Computer Science at Simon Fraser University, where I’m fortunate to work under the supervision of Professor Mo Chen at the MARS Lab. Before joining SFU, I completed my Master’s degree at Sharif University of Technology, advised by Professor Mahdieh Soleymani, and earned my Bachelor’s degree at Shiraz University.</p>
+          <p>My broad research goal is to understand and develop the fundamental components required to build artificial general (or super) intelligence — an agent capable of learning efficiently, generalizing well, and achieving human-level (or beyond) performance across diverse cognitive tasks. I believe such intelligence will emerge from the interplay of several key mechanisms: memory hierarchies, attention, reasoning, lifelong learning and knowledge transfer, goal-oriented behavior, and imagination.</p>
+          <p>Inspired by neuroscience, I aim to bridge insights from the brain with computational learning systems. So far, my research has focused on Continual Learning and Reinforcement Learning, where I explore neuron-inspired approaches that integrate principles observed in biological intelligence.</p>
+          <p>Beyond research — which I genuinely love (most of the time 🙂) — I enjoy watching thought-provoking movies about the future, pondering philosophical questions about the nature of intelligence and the meaning of life, and exploring ideas from different scientific disciplines.</p>
         </div>
       </section>
 
-      <section id="education" class="section experiences-section">
-        <h2 class="section-title"><span class="icon-holder"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></span>Education</h2>
+      <section id="education" aria-labelledby="education-title">
+        <h2 class="section-title" id="education-title">Education 🎓</h2>
 
         <div class="item">
-          <div class="meta">
-            <div class="upper-row">
-              <h3 class="job-title">Ph.D. in Computer Science</h3>
-              <div class="time">Sept 2023 – Present</div>
-            </div>
-            <div class="company">Simon Fraser University (SFU), Burnaby, BC, Canada</div>
+          <div class="upper-row">
+            <h3 class="job-title">Ph.D. in Computer Science</h3>
+            <div class="time">Sept 2023 – Present</div>
           </div>
-          <div class="details">
-            <p>GPA: 4.08/4.33 &nbsp;•&nbsp; Thesis: <em>Knowledge Transfer under Non-stationarity</em> &nbsp;•&nbsp; Supervisor: Prof. Mo Chen</p>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="meta">
-            <div class="upper-row">
-              <h3 class="job-title">M.Sc. in Computer Engineering — AI &amp; Robotics</h3>
-              <div class="time">Sept 2019 – Jan 2022</div>
-            </div>
-            <div class="company">Sharif University of Technology, Tehran, Iran</div>
-          </div>
-          <div class="details">
-            <p>GPA: 18.86/20 (~4.0/4) &nbsp;•&nbsp; Thesis: <em>Brain-inspired meta reinforcement learning using brain-inspired networks</em> &nbsp;•&nbsp; Supervisor: Prof. Mahdieh Soleymani Baghshah</p>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="meta">
-            <div class="upper-row">
-              <h3 class="job-title">B.Sc. in Computer Engineering — Software</h3>
-              <div class="time">Sept 2014 – July 2019</div>
-            </div>
-            <div class="company">Shiraz University, Shiraz, Iran</div>
-          </div>
-          <div class="details">
-            <p>GPA (last 3 years): 18.46/20 (~3.89/4) &nbsp;•&nbsp; Project: <em>Big-data approach to extract high-level insights from university database</em> (20/20)</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="publications" class="section experiences-section">
-        <h2 class="section-title"><span class="icon-holder"><i class="fa-solid fa-file-alt" aria-hidden="true"></i></span>Publications</h2>
-
-        <div class="item">
-          <div class="meta">
-            <div class="upper-row">
-              <h3 class="job-title small-text mb-0">Neumosync: End-to-end neuromodulatory control for plasticity and adaptability in continual learning</h3>
-              <div class="time">ICLR 2026 — Submitted</div>
-            </div>
-            <div class="company small-text">S.R.R. Rohani, K. Khajavi, W. Chung, M. Samiei, M. Chen</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="meta">
-            <div class="upper-row">
-              <h3 class="job-title small-text mb-0">
-                Preserving plasticity in continual learning with adaptive linearity injection
-                <a href="https://arxiv.org/abs/2505.09486" target="_blank" rel="noopener" class="ms-1"><i class="fa-solid fa-link"></i></a>
-              </h3>
-              <div class="time">CoLLAs 2025</div>
-            </div>
-            <div class="company small-text">S.R.R. Rohani, K. Khajavi, W. Chung, M. Chen, S. Vaswani</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="meta">
-            <div class="upper-row">
-              <h3 class="job-title small-text mb-0">Adapting to frequent human direction changes in autonomous frontal following robots</h3>
-              <div class="time">IEEE Robotics and Automation Letters, 2025</div>
-            </div>
-            <div class="company small-text">S. Leisiazar, S.R.R. Rohani, E.J. Park, A. Lim, M. Chen</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="meta">
-            <div class="upper-row">
-              <h3 class="job-title small-text mb-0">Inductive biases for zero-shot systematic generalization in language-informed RL</h3>
-              <div class="time"><em>Machine Learning</em> 114(6):137, 2025</div>
-            </div>
-            <div class="company small-text">N. Hashemi Dijujin, S.R.R. Rohani, M.M. Samiei, M.S. Baghshah</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="meta">
-            <div class="upper-row">
-              <h3 class="job-title small-text mb-0">
-                BIMRL: Brain-Inspired Meta Reinforcement Learning
-                <a href="https://arxiv.org/abs/2210.16530" target="_blank" rel="noopener" class="ms-1"><i class="fa-solid fa-link"></i></a>
-              </h3>
-              <div class="time">IROS 2022</div>
-            </div>
-            <div class="company small-text">S.R.R. Rohani, S. Hedayatian, M.S. Baghshah</div>
-          </div>
-        </div>
-      </section>
-
-      <section id="projects" class="section projects-section">
-        <h2 class="section-title"><span class="icon-holder"><i class="fa-solid fa-archive" aria-hidden="true"></i></span>Projects</h2>
-
-        <div class="item">
-          <div class="meta">
-            <div class="upper-row">
-              <h3 class="job-title small-text mb-0"><a href="https://github.com/RoozbehRazavi/BIMRL" target="_blank" rel="noopener">BIMRL: Brain-Inspired Meta Reinforcement Learning</a></h3>
-            </div>
-          </div>
+          <div class="company">Simon Fraser University (SFU), Burnaby, BC, Canada</div>
           <div class="details small-text">
-            <p>Hierarchical, modular architecture with memory and a prefrontal-like module.</p>
+            GPA: 4.08/4.33 • Thesis: <em>Knowledge Transfer under Non-stationarity</em> • Supervisor: Prof. Mo Chen
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="upper-row">
+            <h3 class="job-title">M.Sc. in Computer Engineering — AI &amp; Robotics</h3>
+            <div class="time">Sept 2019 – Jan 2022</div>
+          </div>
+          <div class="company">Sharif University of Technology, Tehran, Iran</div>
+          <div class="details small-text">
+            GPA: 18.86/20 (~4.0/4) • Thesis: <em>Brain-inspired meta reinforcement learning using brain-inspired networks</em> • Supervisor: Prof. Mahdieh Soleymani Baghshah
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="upper-row">
+            <h3 class="job-title">B.Sc. in Computer Engineering — Software</h3>
+            <div class="time">Sept 2014 – July 2019</div>
+          </div>
+          <div class="company">Shiraz University, Shiraz, Iran</div>
+          <div class="details small-text">
+            GPA (last 3 years): 18.46/20 (~3.89/4) • Project: <em>Big-data approach to extract high-level insights from university database</em> (20/20)
           </div>
         </div>
       </section>
 
-      <section id="experience" class="section experiences-section">
-        <h2 class="section-title"><span class="icon-holder"><i class="fa-solid fa-briefcase" aria-hidden="true"></i></span>Experience</h2>
+      <section id="publications" aria-labelledby="pub-title">
+        <h2 class="section-title" id="pub-title">Publications 📚</h2>
 
         <div class="item">
-          <div class="meta">
-            <div class="upper-row">
-              <h3 class="job-title">Intern</h3>
-              <div class="time">Sept 2025 – Present</div>
-            </div>
-            <div class="company">Human in Motion Robotics Inc., Vancouver, BC, Canada</div>
+          <div class="upper-row">
+            <h3 class="job-title small-text">Neumosync: End-to-end neuromodulatory control for plasticity and adaptability in continual learning</h3>
+            <div class="time">ICLR 2026 — Submitted</div>
           </div>
-          <div class="details">
-            <p>Led migration to an RL-based controller.</p>
-          </div>
+          <div class="company small-text">S.R.R. Rohani, K. Khajavi, W. Chung, M. Samiei, M. Chen</div>
         </div>
 
         <div class="item">
-          <div class="meta">
-            <div class="upper-row">
-              <h3 class="job-title">Research Assistant — Multi-Agent Robotic Systems (MARS)</h3>
-              <div class="time">Sept 2023 – Present</div>
-            </div>
-            <div class="company">Simon Fraser University, Burnaby, BC, Canada &nbsp;•&nbsp; Supervisor: Prof. Mo Chen</div>
+          <div class="upper-row">
+            <h3 class="job-title small-text">Preserving plasticity in continual learning with adaptive linearity injection <a href="https://arxiv.org/abs/2505.09486" target="_blank" rel="noopener">🔗</a></h3>
+            <div class="time">CoLLAs 2025</div>
           </div>
+          <div class="company small-text">S.R.R. Rohani, K. Khajavi, W. Chung, M. Chen, S. Vaswani</div>
         </div>
 
         <div class="item">
-          <div class="meta">
-            <div class="upper-row">
-              <h3 class="job-title">Research Assistant — Machine Learning Laboratory (MLL)</h3>
-              <div class="time">Dec 2019 – Sept 2023</div>
-            </div>
-            <div class="company">Sharif University of Technology, Tehran, Iran &nbsp;•&nbsp; Supervisor: Prof. Mahdieh Soleymani</div>
+          <div class="upper-row">
+            <h3 class="job-title small-text">Adapting to frequent human direction changes in autonomous frontal following robots</h3>
+            <div class="time">IEEE Robotics and Automation Letters, 2025</div>
           </div>
+          <div class="company small-text">S. Leisiazar, S.R.R. Rohani, E.J. Park, A. Lim, M. Chen</div>
         </div>
 
         <div class="item">
-          <div class="meta">
-            <div class="upper-row">
-              <h3 class="job-title">Developer — Bachelor’s Project</h3>
-              <div class="time">Apr 2017 – Sept 2017</div>
-            </div>
-            <div class="company">ICT Center of Shiraz University</div>
+          <div class="upper-row">
+            <h3 class="job-title small-text">Inductive biases for zero-shot systematic generalization in language-informed RL</h3>
+            <div class="time"><em>Machine Learning</em> 114(6):137, 2025</div>
           </div>
-          <div class="details">
-            <p>Built a big-data pipeline using Apache Spark &amp; Spring Boot.</p>
+          <div class="company small-text">N. Hashemi Dijujin, S.R.R. Rohani, M.M. Samiei, M.S. Baghshah</div>
+        </div>
+
+        <div class="item">
+          <div class="upper-row">
+            <h3 class="job-title small-text">BIMRL: Brain-Inspired Meta Reinforcement Learning <a href="https://arxiv.org/abs/2210.16530" target="_blank" rel="noopener">🔗</a></h3>
+            <div class="time">IROS 2022</div>
           </div>
+          <div class="company small-text">S.R.R. Rohani, S. Hedayatian, M.S. Baghshah</div>
         </div>
       </section>
 
-      <section id="teaching" class="section experiences-section">
-        <h2 class="section-title"><span class="icon-holder"><i class="fa-solid fa-chalkboard-user" aria-hidden="true"></i></span>Teaching</h2>
+      <section id="projects" aria-labelledby="projects-title">
+        <h2 class="section-title" id="projects-title">Projects 🧪</h2>
+        <div class="item">
+          <div class="upper-row">
+            <h3 class="job-title small-text"><a href="https://github.com/RoozbehRazavi/BIMRL" target="_blank" rel="noopener">BIMRL: Brain-Inspired Meta Reinforcement Learning</a></h3>
+          </div>
+          <div class="details small-text">Hierarchical, modular architecture with memory and a prefrontal-like module.</div>
+        </div>
+      </section>
 
+      <section id="experience" aria-labelledby="exp-title">
+        <h2 class="section-title" id="exp-title">Experience 💼</h2>
+
+        <div class="item">
+          <div class="upper-row">
+            <h3 class="job-title">Intern</h3>
+            <div class="time">Sept 2025 – Present</div>
+          </div>
+          <div class="company">Human in Motion Robotics Inc., Vancouver, BC, Canada</div>
+          <div class="details small-text">Led migration to an RL-based controller.</div>
+        </div>
+
+        <div class="item">
+          <div class="upper-row">
+            <h3 class="job-title">Research Assistant — Multi-Agent Robotic Systems (MARS)</h3>
+            <div class="time">Sept 2023 – Present</div>
+          </div>
+          <div class="company">Simon Fraser University, Burnaby, BC, Canada • Supervisor: Prof. Mo Chen</div>
+        </div>
+
+        <div class="item">
+          <div class="upper-row">
+            <h3 class="job-title">Research Assistant — Machine Learning Laboratory (MLL)</h3>
+            <div class="time">Dec 2019 – Sept 2023</div>
+          </div>
+          <div class="company">Sharif University of Technology, Tehran, Iran • Supervisor: Prof. Mahdieh Soleymani</div>
+        </div>
+
+        <div class="item">
+          <div class="upper-row">
+            <h3 class="job-title">Developer — Bachelor’s Project</h3>
+            <div class="time">Apr 2017 – Sept 2017</div>
+          </div>
+          <div class="company">ICT Center of Shiraz University</div>
+          <div class="details small-text">Built a big-data pipeline using Apache Spark &amp; Spring Boot.</div>
+        </div>
+      </section>
+
+      <section id="teaching" aria-labelledby="teach-title">
+        <h2 class="section-title" id="teach-title">Teaching 🧑‍🏫</h2>
         <div class="item small-text">
           <p><strong>Machine Learning (SFU)</strong> — Fall 2024, Fall 2025 (Prof. Mo Chen)</p>
           <p><strong>Reinforcement Learning (SUT)</strong> — Spring 2022 (Prof. M.H. Rohban)</p>
@@ -314,60 +356,43 @@ Inspired by neuroscience, I aim to bridge insights from the brain with computati
         </div>
       </section>
 
-      <section id="honors" class="section experiences-section">
-        <h2 class="section-title"><span class="icon-holder"><i class="fa-solid fa-trophy" aria-hidden="true"></i></span>Honors &amp; Awards</h2>
-
-        <div class="item"><div class="meta"><div class="upper-row">
-          <p class="award-title small-text">CMPT Graduate Fellowship &amp; PhD Research Scholarship, SFU (awarded annually for 4 years)</p>
-        </div></div></div>
-
-        <div class="item"><div class="meta"><div class="upper-row">
-          <p class="award-title small-text">Top 20% GPA among M.Sc. graduates, Sharif University of Technology</p>
-        </div></div></div>
-
-        <div class="item"><div class="meta"><div class="upper-row">
-          <p class="award-title small-text">3rd place in Iranian University Entrance Exam (M.Sc., AI &amp; Robotics)</p>
-        </div></div></div>
-
-        <div class="item"><div class="meta"><div class="upper-row">
-          <p class="award-title small-text">Top 15% GPA among B.Sc. graduates, Shiraz University</p>
-        </div></div></div>
+      <section id="honors" aria-labelledby="honors-title">
+        <h2 class="section-title" id="honors-title">Honors &amp; Awards 🏆</h2>
+        <div class="item"><p class="small-text">CMPT Graduate Fellowship &amp; PhD Research Scholarship, SFU (awarded annually for 4 years)</p></div>
+        <div class="item"><p class="small-text">Top 20% GPA among M.Sc. graduates, Sharif University of Technology</p></div>
+        <div class="item"><p class="small-text">3rd place in Iranian University Entrance Exam (M.Sc., AI &amp; Robotics)</p></div>
+        <div class="item"><p class="small-text">Top 15% GPA among B.Sc. graduates, Shiraz University</p></div>
       </section>
 
-      <section id="skills" class="skills-section section">
-        <h2 class="section-title"><span class="icon-holder"><i class="fa-solid fa-rocket" aria-hidden="true"></i></span>Skills</h2>
-
+      <section id="skills" aria-labelledby="skills-title">
+        <h2 class="section-title" id="skills-title">Skills 🚀</h2>
         <div class="skillset">
           <div class="item">
             <h3 class="level-title">Programming</h3>
-            <p class="small-text mb-1">Python, C/C++, Java, C#, MATLAB</p>
+            <p class="small-text">Python, C/C++, Java, C#, MATLAB</p>
           </div>
-
           <div class="item">
             <h3 class="level-title">Deep Learning Frameworks</h3>
-            <p class="small-text mb-1">PyTorch, TensorFlow, JAX</p>
+            <p class="small-text">PyTorch, TensorFlow, JAX</p>
           </div>
-
           <div class="item">
             <h3 class="level-title">Libraries &amp; Packages</h3>
-            <p class="small-text mb-1">NumPy, Pandas, scikit-learn, Matplotlib, Isaac Gym</p>
+            <p class="small-text">NumPy, Pandas, scikit-learn, Matplotlib, Isaac Gym</p>
           </div>
-
           <div class="item">
             <h3 class="level-title">Tools &amp; Platforms</h3>
-            <p class="small-text mb-1">ROS2, Apache Spark, Spring Boot, Django, Neo4j, MongoDB, Git/GitHub</p>
+            <p class="small-text">ROS2, Apache Spark, Spring Boot, Django, Neo4j, MongoDB, Git/GitHub</p>
           </div>
-
           <div class="item">
             <h3 class="level-title">Simulation</h3>
-            <p class="small-text mb-1">Isaac Sim, MuJoCo</p>
+            <p class="small-text">Isaac Sim, MuJoCo</p>
           </div>
         </div>
       </section>
 
-      <section id="courses" class="section experiences-section">
-        <h2 class="section-title"><span class="icon-holder"><i class="fa-solid fa-list-check" aria-hidden="true"></i></span>Selected Courses</h2>
-        <ul class="small-text">
+      <section id="courses" aria-labelledby="courses-title">
+        <h2 class="section-title" id="courses-title">Selected Courses ✅</h2>
+        <ul class="clean small-text">
           <li>Causal Models &amp; Transfer Learning — A (Prof. M. Ester)</li>
           <li>Generative Models — A+ (Prof. K. Li)</li>
           <li>Deep Learning — 19.1/20 (Prof. M. Soleymani)</li>
@@ -379,11 +404,27 @@ Inspired by neuroscience, I aim to bridge insights from the brain with computati
     </main>
   </div>
 
-  <footer class="footer">
-    <div class="text-center">
-      <small class="copyright">Designed with <i class="fa-solid fa-heart" aria-hidden="true"></i> by
-        <a href="http://themes.3rdwavemedia.com" target="_blank" rel="noopener">Xiaoying Riley</a> for developers</small>
-    </div>
+  <footer class="container">
+    <p style="margin:0">Designed & built with ❤️ by Roozbeh Razavi. Based on a modern, minimal template.</p>
   </footer>
+
+  <script>
+    // Theme toggle with localStorage
+    (function() {
+      const key = 'theme-preference';
+      const getPreference = () => localStorage.getItem(key);
+      const setPreference = (v) => localStorage.setItem(key, v);
+      const apply = (v) => {
+        if (v === 'light') document.documentElement.setAttribute('data-theme','light');
+        else document.documentElement.removeAttribute('data-theme');
+      };
+      apply(getPreference());
+      document.getElementById('themeToggle').addEventListener('click', () => {
+        const cur = getPreference() === 'light' ? 'dark' : 'light';
+        setPreference(cur);
+        apply(cur);
+      });
+    })();
+  </script>
 </body>
 </html>
