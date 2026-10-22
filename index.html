@@ -84,7 +84,7 @@
     .header { position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(140%) blur(10px);
       background: color-mix(in oklab, var(--bg) 85%, transparent); border-bottom: 1px solid var(--border); }
     .header-inner { display: flex; align-items: center; gap: 16px; padding: 14px 24px; }
-    .avatar { width: 56px; height: 56px; border-radius: 50%; border: 1px solid var(--border); object-fit: cover; background: #000; }
+    .avatar { width: 56px; height: 56px; border-radius: 50%; border: 1px solid var(--border); object-fit: cover; background: #000; flex-shrink: 0; }
     .title h1 { margin: 0; font-size: clamp(1.2rem, 1rem + 1vw, 1.6rem); font-weight: 800; letter-spacing: -0.02em; }
     .title .tag { color: var(--muted); font-weight: 500; font-size: .95rem; }
     .spacer { flex: 1; }
@@ -97,7 +97,6 @@
     /* Layout */
     .grid { display: grid; grid-template-columns: 240px 1fr; gap: 28px; margin-top: 16px; }
     @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } .side { position: static !important; } .toc { display: none; } }
-    .avatar { flex-shrink: 0; }
 
     /* Sidebar */
     .side { position: sticky; top: 100px; align-self: start; display: flex; flex-direction: column; gap: 18px; }
@@ -121,8 +120,6 @@
     .item-title { margin: 0; font-size: 1rem; font-weight: 600; }
     .time, .meta, .small-text { color: var(--muted); font-size: .93rem; }
     .time { white-space: nowrap; }
-    .item ul { margin: 6px 0 0; padding-left: 18px; font-size: .95rem; }
-    .item ul li + li { margin-top: 4px; }
 
     /* Publications */
     .pub-group { margin: 18px 0 6px; font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
@@ -209,7 +206,7 @@
         <h2 class="section-title" id="about-title">About</h2>
         <div class="summary">
           <p>I’m a Ph.D. candidate in Computing Science at Simon Fraser University, where I’m fortunate to work under the supervision of Professor <a href="https://www.sfu.ca/fas/computing/people/faculty/faculty-members/mo-chen.html" target="_blank" rel="noopener">Mo Chen</a> at the <a href="https://sfumars.com/" target="_blank" rel="noopener">MARS Lab</a>. Before joining SFU, I completed my Master’s degree at Sharif University of Technology, advised by Professor <a href="https://sharif.edu/~soleymani/" target="_blank" rel="noopener">Mahdieh Soleymani Baghshah</a>, and earned my Bachelor’s degree at Shiraz University.</p>
-          <p>My research focuses on decision-making agents that keep learning and adapting when their environment changes. I work on reinforcement learning, credit assignment, continual learning, and meta-RL, often drawing on ideas from neuroscience. More broadly, I’m interested in how agents can learn efficiently from experience and transfer what they know to new situations.</p>
+          <p>I’m interested in how agents can learn efficiently from experience and transfer what they know to new situations. More specifically, my research focuses on decision-making agents that keep learning and adapting under non-stationarity. I work on reinforcement learning, credit assignment, continual learning, and meta-RL, often drawing on ideas from neuroscience.</p>
         </div>
       </section>
 
@@ -247,20 +244,6 @@
           <div class="authors"><strong>S. R. Razavi Rohani</strong>, S. Hedayatian, M. Soleymani Baghshah</div>
           <div class="venue"><em>IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)</em>, 2022 · <a href="https://arxiv.org/abs/2210.16530" target="_blank" rel="noopener">arXiv</a></div>
         </div>
-
-        <h3 class="pub-group">Under Review</h3>
-
-        <div class="pub">
-          <div class="pub-title">Time and cause: Reliability-adaptive hybrid credit assignment in reinforcement learning</div>
-          <div class="authors"><strong>S. R. Razavi Rohani</strong>, M. Chen, A. White</div>
-          <div class="venue">Under review at <em>ICLR 2027</em></div>
-        </div>
-
-        <div class="pub">
-          <div class="pub-title">XoMorph: Morphology-adaptive reinforcement learning for human-like exoskeleton locomotion</div>
-          <div class="authors"><strong>S. R. Razavi Rohani</strong>, B. Yazdankhoo, B. Peykari, E. J. Park</div>
-          <div class="venue">Under review at <em>IEEE Robotics and Automation Letters (RA-L)</em></div>
-        </div>
       </section>
 
       <section class="block" id="experience" aria-labelledby="exp-title">
@@ -272,10 +255,6 @@
             <div class="time">Sep 2025 – Mar 2026</div>
           </div>
           <div class="meta">Human in Motion Robotics Inc., Vancouver, BC</div>
-          <ul>
-            <li>Led the migration of an exoskeleton platform from model-based control to a learned RL policy, covering framework design, motion-capture data collection, implementation, and sim-to-real transfer.</li>
-            <li>Trained morphology-conditioned policies in Isaac Sim with domain randomization; this work forms the basis of <em>XoMorph</em> (under review, IEEE RA-L).</li>
-          </ul>
         </div>
 
         <div class="item">
@@ -284,24 +263,15 @@
             <div class="time">Sep 2023 – Present</div>
           </div>
           <div class="meta">Simon Fraser University, Burnaby, BC</div>
-          <ul>
-            <li>Developed a hybrid credit-assignment method that weights temporal and causal credit by the reliability of learned causal knowledge, improving sample efficiency on long-horizon tasks (under review, ICLR 2027).</li>
-            <li>Proposed NeuMoSync, an end-to-end neuromodulatory controller that maintains plasticity in continual learning across class-incremental, domain-incremental, and other non-stationary settings (TMLR 2026).</li>
-            <li>Introduced adaptive linearity injection to preserve plasticity, improving both supervised and reinforcement continual learning (CoLLAs 2025).</li>
-            <li>Trained an RL follow-ahead agent used as a module within an MCTS-style planner, enabling robots to adapt to frequent human direction changes (IEEE RA-L 2025).</li>
-          </ul>
         </div>
 
         <div class="item">
           <div class="upper-row">
-            <h3 class="item-title">Research Assistant, Machine Learning Laboratory</h3>
+            <!-- TODO: replace ML_LAB_URL with the Machine Learning Lab's website -->
+            <h3 class="item-title">Research Assistant, <a href="ML_LAB_URL" target="_blank" rel="noopener">Machine Learning Lab</a></h3>
             <div class="time">Dec 2019 – Sep 2023</div>
           </div>
           <div class="meta">Sharif University of Technology, Tehran, Iran</div>
-          <ul>
-            <li>Proposed BIMRL, a brain-inspired meta-RL architecture combining a world model, dynamics-aware value prediction, and hierarchical memory; improved adaptation on long-horizon MiniGrid tasks (IROS 2022).</li>
-            <li>Improved zero-shot systematic generalization of language-informed RL agents by adding a neuroscience-inspired memory feedback loop (<em>Machine Learning</em>, 2025).</li>
-          </ul>
         </div>
 
         <div class="item">
@@ -310,9 +280,6 @@
             <div class="time">Apr 2017 – Sep 2017</div>
           </div>
           <div class="meta">ICT Center, Shiraz University, Shiraz, Iran</div>
-          <ul>
-            <li>Built a big-data pipeline with Apache Spark and Spring Boot to extract and visualize insights from the university database.</li>
-          </ul>
         </div>
       </section>
 
